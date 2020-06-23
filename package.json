@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/rezendefelipe/node-tdd-clean-api.git"
   },
+  "standard": {
+    "env": ["jest"]
+  },
   "author": "Felipe Viana Rezende",
   "license": "ISC",
   "bugs": {
