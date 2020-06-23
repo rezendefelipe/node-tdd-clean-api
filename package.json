@@ -1,0 +1,19 @@
+{
+  "name": "tdd-clean-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rezendefelipe/node-tdd-clean-api.git"
+  },
+  "author": "Felipe Viana Rezende",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rezendefelipe/node-tdd-clean-api/issues"
+  },
+  "homepage": "https://github.com/rezendefelipe/node-tdd-clean-api#readme"
+}
