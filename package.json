@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "test:staged": "jest --passWithNoTests"
+    "test": "jest --watch --silent --colors --noStackTrace",
+    "test:staged": "jest --passWithNoTests --findRelatedTests --silent --noStackTrace",
+    "test:ci": "jest --coverage --noStackTrace --silent"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rezendefelipe/node-tdd-clean-api.git"
-  },
+  }, 
   "standard": {
     "env": ["jest"]
   },
