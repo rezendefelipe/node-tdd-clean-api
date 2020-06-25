@@ -19,7 +19,7 @@ class AuthUseCase {
     }
 
     if (!this.loadUserByEmailRepository.load) {
-      throw new MissingParamError('loadUserByEmailRepository')
+      throw new InvalidParamError('loadUserByEmailRepository')
     }
 
     const user = await this.loadUserByEmailRepository.load(email)
@@ -50,7 +50,7 @@ describe('Auth Use Case', () => {
 
   test('Shoud throw if no password is provided', async () => {
     const { sut } = makeSut()
-    const promisse = sut.auth()
+    const promisse = sut.auth('any_email@email.com')
     expect(promisse).rejects.toThrow(new MissingParamError('password'))
   })
 
