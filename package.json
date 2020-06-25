@@ -13,9 +13,11 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rezendefelipe/node-tdd-clean-api.git"
-  }, 
+  },
   "standard": {
-    "env": ["jest"]
+    "env": [
+      "jest"
+    ]
   },
   "author": "Felipe Viana Rezende",
   "license": "ISC",
@@ -29,5 +31,7 @@
     "lint-staged": "^10.2.11",
     "standard": "^14.3.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "validator": "^13.1.1"
+  }
 }
