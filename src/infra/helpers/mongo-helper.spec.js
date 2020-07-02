@@ -9,11 +9,11 @@ describe('MongoHelper Validator', () => {
     await sut.disconnect()
   })
 
-  test('Should reconect when getDb() is invoked and client is disconnected', async () => {
+  test('Should reconect when getColletion() is invoked and client is disconnected', async () => {
     expect(sut.db).toBeTruthy()
     await sut.disconnect()
     expect(sut.db).toBeFalsy()
-    await sut.getDb()
+    await sut.getColletion('users')
     expect(sut.db).toBeTruthy()
   })
 })

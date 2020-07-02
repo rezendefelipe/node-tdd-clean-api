@@ -1,14 +1,12 @@
 const MissingParamError = require('../../utils/errors/missing-param-error')
+const MongoHelper = require('../helpers/mongo-helper')
 
 module.exports = class UpdadeAccessTokenRepository {
-  constructor (userModel) {
-    this.userModel = userModel
-  }
-
   async update (userId, accessToken) {
     if (!userId) throw new MissingParamError('userId')
     if (!accessToken) throw new MissingParamError('accessToken')
-    await this.userModel.updateOne({
+    const userModel = await MongoHelper.getColletion('users')
+    await userModel.updateOne({
       _id: userId
     }, {
       $set: {

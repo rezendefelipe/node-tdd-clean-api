@@ -12,12 +12,15 @@ const makeSut = () => {
     }
   }
   const authUseCaseSpy = new AuthUseCaseSpy()
-  const EmailValidatorSpy = makeEmailValidator()
-  const sut = new LoginRouter(authUseCaseSpy, EmailValidatorSpy)
+  const emailValidatorSpy = makeEmailValidator()
+  const sut = new LoginRouter({
+    authUseCase: authUseCaseSpy,
+    emailValidator: emailValidatorSpy
+  })
   return {
     sut,
     authUseCaseSpy,
-    EmailValidatorSpy
+    emailValidatorSpy
   }
 }
 
@@ -164,8 +167,8 @@ describe('Login Router', () => {
   })
 
   test('Should return 400 if an invalid email is provided', async () => {
-    const { sut, EmailValidatorSpy } = makeSut()
-    EmailValidatorSpy.isEmailValid = false
+    const { sut, emailValidatorSpy } = makeSut()
+    emailValidatorSpy.isEmailValid = false
     const httpRequest = {
       body: {
         email: 'invalid_email',

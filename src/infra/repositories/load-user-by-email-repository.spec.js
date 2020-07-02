@@ -1,25 +1,20 @@
 const MissingParamError = require('../../utils/errors/missing-param-error')
 const MongoHelper = require('../helpers/mongo-helper')
 const LoadUserByEmailRepository = require('./load-user-by-email-repository')
-let db
+let userModel
 
 const makeSut = () => {
-  const userModel = db.collection('users')
-  const sut = new LoadUserByEmailRepository(userModel)
-  return {
-    userModel,
-    sut
-  }
+  return new LoadUserByEmailRepository()
 }
 
 describe('LoadUserByEmail Repository Validator', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
-    db = await MongoHelper.getDb()
+    userModel = await MongoHelper.getColletion('users')
   })
 
   beforeEach(async () => {
-    await db.collection('users').deleteMany()
+    await userModel.deleteMany()
   })
 
   afterAll(async () => {
@@ -27,13 +22,13 @@ describe('LoadUserByEmail Repository Validator', () => {
   })
 
   test('Should return null if no user id found', async () => {
-    const { sut } = makeSut()
+    const sut = makeSut()
     const user = await sut.load('invalid_email@email.com')
     expect(user).toBeNull()
   })
 
   test('Should return user if user is found', async () => {
-    const { sut, userModel } = makeSut()
+    const sut = makeSut()
     const fakeUser = await userModel.insertOne({
       email: 'valid_email@email.com',
       password: 'hased_password',
@@ -46,14 +41,8 @@ describe('LoadUserByEmail Repository Validator', () => {
     })
   })
 
-  test('Should throw if no usermodel is provided', async () => {
-    const sut = new LoadUserByEmailRepository()
-    const promise = sut.load('any_email@email.com')
-    expect(promise).rejects.toThrow()
-  })
-
   test('Should throw if no email is provided', async () => {
-    const { sut } = makeSut()
+    const sut = makeSut()
     const promise = sut.load()
     expect(promise).rejects.toThrow(new MissingParamError('email'))
   })
