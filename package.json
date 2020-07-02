@@ -8,8 +8,8 @@
     "test": "jest --colors --noStackTrace --passWithNoTests --runInBand",
     "test:unit": "jest --watch --colors --noStackTrace --runInBand -c jest-config-unit.js",
     "test:integration": "jest --watch --colors --noStackTrace -c jest-config-integration.js",
-    "test:staged": "jest --passWithNoTests --findRelatedTests --silent --noStackTrace",
-    "test:ci": "jest --coverage --noStackTrace --silent"
+    "test:staged": "jest --passWithNoTests --findRelatedTests --runInBand --silent --noStackTrace",
+    "test:ci": "jest --coverage --noStackTrace --silent --runInBand"
   },
   "repository": {
     "type": "git",
@@ -37,6 +37,7 @@
   "dependencies": {
     "bcrypt": "^5.0.0",
     "express": "^4.17.1",
+    "fast-glob": "^3.2.4",
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.5.9",
     "validator": "^13.1.1"
