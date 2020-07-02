@@ -5,8 +5,8 @@
   "main": "src/main/index.js",
   "scripts": {
     "start": "node src/main/index.js",
-    "test": "jest --colors --noStackTrace --passWithNoTests",
-    "test:unit": "jest --watch --colors --noStackTrace -c jest-config-unit.js",
+    "test": "jest --colors --noStackTrace --passWithNoTests --runInBand",
+    "test:unit": "jest --watch --colors --noStackTrace --runInBand -c jest-config-unit.js",
     "test:integration": "jest --watch --colors --noStackTrace -c jest-config-integration.js",
     "test:staged": "jest --passWithNoTests --findRelatedTests --silent --noStackTrace",
     "test:ci": "jest --coverage --noStackTrace --silent"
