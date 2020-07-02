@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
+const setupApp = require('./setup')
 const setupRoutes = require('./routes')
 
-const setupApp = require('./setup')
 setupApp(app)
 setupRoutes(app)
 

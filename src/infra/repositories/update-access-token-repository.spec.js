@@ -28,6 +28,7 @@ describe('UpdateAccessToken Repository Validator', () => {
   afterAll(async () => {
     await MongoHelper.disconnect()
   })
+
   test('Should update the user with the given accessToken', async () => {
     const sut = makeSut()
 
